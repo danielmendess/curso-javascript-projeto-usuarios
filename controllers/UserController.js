@@ -130,7 +130,7 @@ class UserController {
         let tr = document.createElement('tr');
 
         tr.innerHTML = `
-                <td><img src="${dataUser.photo}" alt="User Image" class="img-circle img-sm"></td>
+                <td><img src="${dataUser.photo}" alt="Imagem do usuário" class="img-circle img-sm"></td>
                 <td>${dataUser.name}</td>
                 <td>${dataUser.email}</td>
                 <td>${(dataUser.admin) ? 'Sim' : 'Não'}</td>
