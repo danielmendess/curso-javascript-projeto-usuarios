@@ -21,6 +21,8 @@ class UserController {
 
             let values = this.getValues();
 
+            if(!values) return false;
+
             this.getPhoto().then((content) => {
 
                 values.photo = content;
@@ -88,8 +90,16 @@ class UserController {
     getValues() {
 
         let user = {};
+        let isValid = true;
 
         [...this.formEl.elements].forEach(function (field, index) {
+
+            if(['name', 'email', 'password'].indexOf(field.name) > -1 && !field.value) {
+
+                field.parentElement.classList.add('has-error');
+                isValid = false
+                
+            }
 
             if (field.name == 'gender') {
 
@@ -110,6 +120,10 @@ class UserController {
             }
 
         });
+
+        if(!isValid) {
+            return false;
+        }
 
         var objectUser = new User(
             user.name,
